@@ -1,0 +1,52 @@
+<div class="flex h-screen">
+  <!-- Sidebar -->
+  <div
+    class="fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out"
+    [class.-translate-x-full]="!sidenavOpened"
+    [class.translate-x-0]="sidenavOpened"
+  >
+    <div class="flex items-center h-16 px-4 border-b border-gray-200 font-bold text-lg">
+      Menú
+      <button class="ml-auto p-2" (click)="closeSidenav()">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-2 p-4">
+      <a
+        *ngFor="let link of navLinks"
+        [routerLink]="link.route"
+        (click)="closeSidenav()"
+        class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+        routerLinkActive="bg-gray-200 font-semibold"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+          <mat-icon>{{ link.icon }}</mat-icon>
+        <span>{{ link.label }}</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Overlay for mobile -->
+  <div
+    class="fixed inset-0 z-20 bg-black bg-opacity-30 transition-opacity duration-200"
+    *ngIf="sidenavOpened"
+    (click)="closeSidenav()"
+  ></div>
+
+  <!-- Main content -->
+  <div class="flex-1 flex flex-col min-h-screen ml-0 transition-all duration-200">
+    <header class="flex items-center h-16 px-4 bg-white border-b border-gray-200 shadow-sm">
+      <button class="p-2 mr-4" (click)="toggleSidenav()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <span class="font-bold text-xl">Mi Aplicación</span>
+    </header>
+    <main class="flex-1 p-6 bg-gray-50">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
