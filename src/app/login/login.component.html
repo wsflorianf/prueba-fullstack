@@ -1,0 +1,65 @@
+<div class="min-h-screen w-full flex items-center justify-center">
+    <div class="nebulous-background overflow-hidden">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <div class="blob blob-5"></div>
+        <div class="blob blob-6"></div>
+        <div class="blob blob-7"></div>
+        <div class="blob blob-8"></div>
+        <div class="blob blob-9"></div>
+        <div class="blob blob-10"></div>
+        <div class="blob blob-11"></div>
+        <div class="blob blob-12"></div>
+        <div class="blob blob-13"></div>
+        <div class="blob blob-14"></div>
+        <div class="blob blob-15"></div>
+        <div class="blob blob-16"></div>
+        <div class="blob blob-17"></div>
+        <div class="blob blob-18"></div>
+        <div class="blob blob-19"></div>
+        <div class="blob blob-20"></div>
+        <div class="blob blob-21"></div>
+        <div class="blob blob-22"></div>
+        <div class="blob blob-23"></div>
+        <div class="blob blob-24"></div>
+        <div class="blob blob-25"></div>
+        <div class="blob blob-26"></div>
+        <div class="blob blob-27"></div>
+        <div class="blob blob-28"></div>
+        <div class="blob blob-29"></div>
+        <div class="blob blob-30"></div>
+        <div class="blob blob-31"></div>
+        <div class="blob blob-32"></div>
+        <div class="blob blob-33"></div>
+        <div class="blob blob-34"></div>
+        <div class="blob blob-35"></div>
+    </div>
+  <div class="max-w-md w-full bg-white/70 rounded-xl shadow-2xl shadow-black/40 p-8">
+    <h2 class="text-3xl font-medium text-black text-center m-4">Iniciar Sesión</h2>
+
+    <form [formGroup]="loginForm">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="ejemplo@correo.com" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="••••••••" />
+        <mat-icon matSuffix (click)="togglePasswordVisibility()" class="cursor-pointer">{{showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+
+
+      <button mat-raised-button color="primary" class="w-full font-medium py-2.5 rounded-lg transition-colors">
+        Iniciar Sesión
+      </button>
+    </form>
+
+    <!-- <div class="mt-6 text-center text-sm text-gray-600">
+      ¿No tienes una cuenta? 
+      <button class="text-red-800 hover:text-red-700 font-medium">Regístrate</button>
+    </div> -->
+  </div>
+</div>
