@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-layout',
@@ -10,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     RouterModule,
     MatIconModule,
+    MatRippleModule
+
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
@@ -17,8 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
 export class LayoutComponent {
   navLinks = [
     { label: 'Inicio', icon: 'home', route: '/' },
-    { label: 'Accesos', icon: 'users', route: '/accesos' },
-    { label: 'Configuración', icon: 'cog', route: '/config' }
+    { label: 'Accesos', icon: 'lock_person', route: '/accesos' },
+    { label: 'Configuración', icon: 'settings', route: '/config' }
   ];
 
   sidenavOpened = true;
@@ -29,5 +32,17 @@ export class LayoutComponent {
 
   closeSidenav() {
     this.sidenavOpened = false;
+  }
+
+  darkMode = false;
+
+  toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+    const root = document.documentElement;
+    if (this.darkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
   }
 }
