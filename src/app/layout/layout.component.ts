@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-layout',
@@ -25,6 +26,9 @@ export class LayoutComponent {
   ];
 
   sidenavOpened = true;
+  darkMode = false;
+
+  constructor(private authService: AuthService) {}
 
   toggleSidenav() {
     this.sidenavOpened = !this.sidenavOpened;
@@ -34,7 +38,9 @@ export class LayoutComponent {
     this.sidenavOpened = false;
   }
 
-  darkMode = false;
+  logout() {
+    this.authService.logout();
+  }
 
   toggleDarkMode() {
     this.darkMode = !this.darkMode;

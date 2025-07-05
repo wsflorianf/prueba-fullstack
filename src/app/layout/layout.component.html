@@ -26,6 +26,14 @@
           <mat-icon>{{ link.icon }}</mat-icon>
         <span>{{ link.label }}</span>
       </a>
+      <a
+        matRipple
+        (click)="logout()"
+        class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors select-none cursor-pointer"
+      >
+          <mat-icon>logout</mat-icon>
+        <span>Cerrar Sesión</span>
+      </a>
     </nav>
   </div>
 

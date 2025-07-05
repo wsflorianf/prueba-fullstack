@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -26,15 +27,21 @@ export class LoginComponent {
   loginForm: FormGroup;
   showPassword = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
-      email: [''],
+      username: [''],
       password: [''],
-      remember: [false]
     });
+  }
+
+  login() {
+    const { username, password } = this.loginForm.value;
+    console.log('Login attempt:', { username, password });
+    this.authService.login(username, password);
   }
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
+
 }
